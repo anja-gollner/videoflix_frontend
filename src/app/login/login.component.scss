@@ -1,0 +1,106 @@
+@import "./../../styles.scss";
+
+
+section {
+    height: calc(100vh - 192px);
+    @include dFlex();
+
+    .login-container {
+        @include dFlex($fd: column, $g: 16px);
+        @include max-width();
+        @include wrapper();
+        width: 90%;
+
+        h2 {
+            color: $dark;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        form {
+            @include dFlex($g: 24px, $fd: column);
+            font-size: 18px;
+            width: 100%;
+
+            input {
+                @include input($border-radius: 16px);
+                padding: 8px 16px;
+                font-size: 16px;
+
+
+                &::placeholder {
+                    color: $light;
+                    opacity: 1;
+
+                }
+            }
+
+            .input-group {
+                position: relative;
+                width: 100%;
+            }
+
+            .password-container {
+                position: relative;
+                width: 100%;
+
+                .toggle-password {
+                    position: absolute;
+                    right: 12px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    color: $dark;
+                }
+            }
+
+            button {
+                @include button();
+
+                &:disabled {
+                    background-color: $light;
+                }
+            }
+        }
+
+        .forgot-password {
+            color: $dark;
+            font-weight: 700;
+            transition: all 100ms ease-in;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+
+        .signup-link {
+            a {
+                color: $dark;
+                font-weight: 700;
+                transition: all 100ms ease-in;
+                padding-left: 16px;
+                display: inline-block;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        @include dFlex();
+        margin-top: -14px;
+        width: 100%;
+        text-align: center;
+
+        img {
+            padding-right: 6px;
+        }
+    }
+}

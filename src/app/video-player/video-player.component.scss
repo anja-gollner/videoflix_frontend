@@ -1,0 +1,179 @@
+@import "./../../styles.scss";
+
+$background-overlay: rgba(0, 0, 0, 0.8);
+$background-button: rgba(0, 0, 0, 0.6);
+$background-button-down: rgba(253, 253, 253, 0.6);
+$border-radius: 6px;
+$button-padding: 6px 12px;
+$button-font-size: clamp(13px, 2vw, 18px);
+
+.video-player-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: $background-overlay;
+    @include dFlex();
+    z-index: 1000;
+
+    .video-content {
+        width: 80%;
+        @include dFlex();
+
+        @media (max-width: 576px) {
+            width: 100%;
+        }
+    }
+}
+
+.video-player {
+    position: relative;
+    border-radius: $border-radius;
+    width: 90%;
+    height: auto;
+    @include dFlex();
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+    }
+}
+
+.quality-dropdown {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 80px;
+
+    .quality-btn {
+        background: $background-button;
+        color: #fff;
+        border: none;
+        padding: $button-padding;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: $button-font-size;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .quality-menu {
+        background: $background-overlay;
+        border-radius: 4px;
+        margin-top: 4px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        button {
+            background: transparent;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            text-align: left;
+            cursor: pointer;
+            font-size: $button-font-size;
+            width: 100%;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: $background-button;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: $button-font-size;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.spool-buttons {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1200;
+
+    @media (max-width: 576px) {
+        bottom: -10px;
+    }
+
+    .spool-btn {
+        background: $background-button;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: clamp(10px, 2vw, 16px);
+        @include dFlex($g: 5px);
+
+        @media (max-width: 576px) {
+            background: $background-button-down;
+            padding: 4px 8px;
+        }
+
+
+        img {
+            width: 16px;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.continue-restart-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1200;
+
+    button {
+        background: $background-button;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: $button-font-size;
+        @include dFlex($g: 5px);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}

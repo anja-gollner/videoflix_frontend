@@ -1,0 +1,64 @@
+<section>
+    <div class="signup-container">
+        <h2>Sign up</h2>
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" name="contactForm">
+            <div class="input-group">
+                <input #email="ngModel" [(ngModel)]="contactData.email" type="email" placeholder="Email Address"
+                    id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+                    (focus)="emailFocused = true" (blur)="emailFocused = false">
+            </div>
+            @if (email.touched && email.errors) {
+            <div class="error">
+                @if (email.errors['required']) {
+                <img src="assets/icons/warning.svg" alt="">
+                email is required
+                }
+                @if (email.errors['pattern']) {
+                <img src="assets/icons/warning.svg" alt="">
+                invalid email format
+                }
+            </div>
+            }
+
+            <div class="password-container">
+                <input #password="ngModel" [(ngModel)]="contactData.password"
+                    [type]="passwordVisible ? 'text' : 'password'" placeholder="Enter a password" name="password"
+                    required minlength="8">
+                <img [src]="passwordVisible ? 'assets/icons/visibility.svg' : 'assets/icons/visibility_off.svg'"
+                    class="toggle-password" (click)="togglePasswordVisibility('password')">
+            </div>
+            @if (password.touched && password.errors) {
+            <div class="error">
+                @if (password.errors['required']) {
+                <img src="assets/icons/warning.svg" alt="">
+                password is required
+                }
+                @if (password.errors['minlength']) {
+                <img src="assets/icons/warning.svg" alt="">
+                password needs to be at least 8 capitals
+                }
+            </div>
+            }
+            <div class="password-container">
+                <input #confirmPassword="ngModel" [(ngModel)]="contactData.repeated_password"
+                    [type]="confirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm password"
+                    name="confirmPassword" required>
+                <img [src]="confirmPasswordVisible ? 'assets/icons/visibility.svg' : 'assets/icons/visibility_off.svg'"
+                    class="toggle-password" (click)="togglePasswordVisibility('confirmPassword')">
+            </div>
+
+            @if (confirmPassword.touched && contactData.password !== contactData.repeated_password) {
+            <div class="error">
+                <img src="assets/icons/warning.svg" alt="">
+                passwords do not match
+            </div>
+            }
+
+            <button type="submit"
+                [disabled]="!contactForm.valid || contactData.password !== contactData.repeated_password">
+                Get started
+            </button>
+        </form>
+        <p>{{ message }}</p>
+    </div>
+</section>

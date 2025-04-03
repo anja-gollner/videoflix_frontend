@@ -1,0 +1,275 @@
+$dark : rgb(46, 62, 239);
+$light : #969eef;
+$bg : #141414;
+$white : #ffffff;
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $bg;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 2s ease-in-out;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.5);
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: -1;
+    }
+}
+
+
+a {
+    text-decoration: none;
+}
+
+@mixin max-width {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin dFlex($fd: row, $jc: center, $ai: center, $g: 0px) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $g;
+}
+
+@mixin button($bg-color: $dark, $text-color: white) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: clamp(8px, 2vw, 10px) clamp(16px, 4vw, 20px);
+    border-radius: 60px;
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 100ms ease-in;
+
+    &:hover {
+        background-color: rgba(42, 53, 169, 0.9);
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 576px) {
+        padding: 8px 22px;
+    }
+}
+
+@mixin input($border-radius: 32px) {
+    width: 100%;
+    border: 2px solid $white;
+    border-radius: $border-radius;
+    padding: 12px 32px;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24.55px;
+    color: $dark;
+    cursor: text;
+    outline: none;
+
+    &::placeholder {
+        color: $dark;
+    }
+
+    &:hover {
+        border-color: $dark;
+    }
+
+    &:focus {
+        border-color: $dark;
+    }
+
+    &:not(:focus):not(:hover) {
+        border-color: $light;
+    }
+}
+
+@mixin inputWhite($border-radius: 32px) {
+    width: 100%;
+    border: 2px solid $white;
+    border-radius: $border-radius;
+    padding: 12px 32px;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24.55px;
+    color: $white;
+    cursor: text;
+    outline: none;
+
+    &::placeholder {
+        color: $white;
+    }
+
+    &:hover {
+        border-color: $white;
+    }
+
+    &:focus {
+        border-color: $light;
+    }
+
+    &:not(:focus):not(:hover) {
+        border-color: $white;
+    }
+}
+
+@mixin wrapper() {
+    max-height: fit-content;
+    background: white;
+    padding: 40px;
+    border-radius: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+
+    @media (max-width: 576px) {
+        padding: 24px;
+    }
+}
+
+
+
+/* dm-sans-100 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-100.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-200 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 200;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-200.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-300 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-300.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-regular - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-500 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-500.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-600 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-600.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-700 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-800 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-800.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-sans-900 - latin */
+@font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../public/assets/fonts/dm-sans-v15-latin-900.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}

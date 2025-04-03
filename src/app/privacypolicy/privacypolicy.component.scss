@@ -1,0 +1,51 @@
+@import "./../../styles.scss";
+
+section {
+    @include dFlex($fd: column, $jc: flex-start);
+    border-radius: 8px;
+    padding: 24px clamp(12px, 6vw, 96px);
+    text-align: left;
+    overflow-y: auto;
+    width: 100%;
+    text-align: center;
+    height: calc(100vh - 192px);
+
+    .content {
+        @include max-width();
+        color: white;
+        padding: 12px;
+
+        h1 {
+            color: $light;
+            font-weight: 700;
+            font-size: clamp(24px, 4vw, 40px);
+        }
+
+        h2 {
+            color: $light;
+            margin-top: 12px;
+            font-size: clamp(18px, 3vw, 32px);
+        }
+
+        p,
+        ul {
+            font-size: clamp(14px, 2vw, 18px);
+            line-height: 1.6;
+            color: white;
+            list-style: none;
+        }
+
+        ul {
+            padding-left: 0px;
+        }
+
+        a {
+            color: $light;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

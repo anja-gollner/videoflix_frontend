@@ -1,0 +1,37 @@
+<section>
+    <div class="login-container">
+        <h2>Log in</h2>
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" name="contactForm">
+            <div class="input-group">
+                <input #email="ngModel" [(ngModel)]="contactData.email" type="email" placeholder="Email Address"
+                    id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+                    (focus)="emailFocused = true" (blur)="emailFocused = false">
+            </div>
+            @if (email.touched && email.errors) {
+            <div class="error">
+                @if (email.errors['required']) {
+                <img src="assets/icons/warning.svg" alt="">
+                email is required
+                }
+                @if (email.errors['pattern']) {
+                <img src="assets/icons/warning.svg" alt="">
+                invalid email format
+                }
+            </div>
+            }
+            <div class="password-container">
+                <input #password="ngModel" [(ngModel)]="contactData.password"
+                    [type]="passwordVisible ? 'text' : 'password'" placeholder="Enter a password" name="password"
+                    required minlength="8">
+                <img [src]="passwordVisible ? 'assets/icons/visibility.svg' : 'assets/icons/visibility_off.svg'"
+                    class="toggle-password" (click)="togglePasswordVisibility('password')">
+            </div>
+            <div *ngIf="errorMessage" class="error">
+                {{ errorMessage }}
+            </div>
+            <button type="submit" [disabled]="!contactForm.valid">Log in</button>
+        </form>
+        <a routerLink="/forgot-password" class="forgot-password">Forgot password?</a>
+        <p class="signup-link">New to Videoflix? <a routerLink="/signup">Sign Up now</a></p>
+    </div>
+</section>

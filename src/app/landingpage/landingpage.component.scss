@@ -1,0 +1,51 @@
+@import "./../../styles.scss";
+
+main {
+    width: 100%;
+    @include dFlex($fd: column, $g: 24px);
+    @include max-width();
+    height: calc(100vh - 192px);
+    text-align: center;
+    padding: 0 12px;
+
+
+    h1 {
+        font-size: 48px;
+        font-weight: 700;
+        color: $white;
+
+    }
+
+    span {
+        font-size: 18px;
+        color: $white;
+        padding-bottom: 12px;
+    }
+
+    div {
+        @include dFlex($g: 24px);
+        width: 100%;
+
+        input {
+            @include inputWhite();
+            width: 100%;
+            max-width: 400px;
+        }
+
+        button {
+            @include button();
+            @include dFlex();
+
+            span {
+                white-space: nowrap;
+                padding: 0;
+                font-weight: 700;
+            }
+
+        }
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+        }
+    }
+}
