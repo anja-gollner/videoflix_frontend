@@ -10,7 +10,7 @@ import { Video } from './../interfaces/video.interface';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  private BASE_URL: string = 'http://127.0.0.1:8000/api/';
+  private BASE_URL: string = 'https://videoflix-backend-3zyr.onrender.com/api/';
 
   private getHeaders(token?: string | null): HttpHeaders {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
